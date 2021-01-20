@@ -1,0 +1,15 @@
+{
+    "fullOrgs" :[
+        {
+            "orgName" : "microsoft",
+            "exclude" : ""
+        },
+        {
+            "orgName" : "Esri",
+            "exclude" : ""
+        }
+    ],
+    "individualRepos" : [
+        
+    ]
+}

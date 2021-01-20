@@ -1,1 +1,1 @@
-# github-repo-stats-azure-function
+# github-repo-stats

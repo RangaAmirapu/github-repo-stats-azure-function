@@ -1,0 +1,23 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "FUNCTIONS_WORKER_PROCESS_COUNT": 1,
+    "PYTHON_THREADPOOL_THREAD_COUNT": 5,
+    "Github_Token": "<GITHUB API KEY>",
+    "NumberOfReposToCleanPerTask": 1000,
+    "NumberOfReposToQueryPerCall": 65,
+    "CosmosDB_Endpoint": "<COSMOSDB ENDPOINT URL>",
+    "CosmosDB_PrimaryKey": "<COSMOSDB PRIMARY KEY>",
+    "CosmosDB_DBName": "<COSMOS DB ACCOUNT NAME>",
+    "CosmosDB_DataContainerName": "<COSMOS DB CONTAINER NAME WHICH HOLDS STATS DATA>",
+    "CosmosDB_RunInfoContainerName": "<COSMOS DB CONTAINER NAME WHICH HOLDS RUN INFO>",
+    "CosmosDB_ServerlessMode": "false",
+    "CosmosDB_ProvisionedThroughput": 400,
+    "CosmosDB_RU_NeededForEachWrite": 5,
+    "SendGrid_API_Key": "<SENDGRID API KEY>",
+    "SendGrid_VerifiedFromSenderEmail" : "<SENDGRID VERIFIED SENDER EMAIL>",
+    "SendGrid_ToEmail" : "<EMAIL FOR RECEIVING NOTIFICATIONS>"
+  }
+}
