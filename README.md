@@ -1,15 +1,25 @@
 # Building a data pipeline using Azure Durable Functions 
 
 [Introduction](#introduction)
+
 [Features](#features)
+
 [Project structure explanation](#project-structure-explanation)
+
 [Data source configuration](#data-source-configuration)
+
 [Function configurations](#function-configurations)
+
 [Database design](#database-design)
+
 [Project flow and functions explanation](#project-flow-and-functions-explanation)
+
 [Deployment](#deployment)
+
 [QA and Monitoring](#qa-and-monitoring)
+
 [Next Steps](#next-steps)
+
 [Github Project Board](https://github.com/RangaAmirapu/github-repo-stats-azure-function/projects/1)
 
 ## Introduction
