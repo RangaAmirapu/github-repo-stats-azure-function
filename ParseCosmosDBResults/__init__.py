@@ -2,11 +2,11 @@ import logging
 import functools
 import operator
 
-from typing import List
+from typing import Dict, List
 from Helpers.SendEmails import sendEmail
 
 
-def main(cosmosDBResult: List) -> str:
+def main(cosmosDBResult: List) -> Dict:
     """
     Takes in a list of cosmos DB create item results to generate report 
     Returns html string containing the report to send email
@@ -25,6 +25,7 @@ def main(cosmosDBResult: List) -> str:
         totalProcessed = 0
         totalCreatedCount = 0
         totalFailedCount = 0
+        createdList = ''
         failedList = ''
         
         # Parse the incoming list and form html string
@@ -34,9 +35,23 @@ def main(cosmosDBResult: List) -> str:
             totalProcessed += result["processed"]
             totalCreatedCount += result["createdCount"]
             totalFailedCount += result["failedCount"]
-            failedList += ", ".join(result["failedList"])
-            
-        return "<b>Total received: {0} <br>Total processed: {1}<br>Total created: {2}<br>Total failed: {3} <br>Failed List: {4}<br></b>".format(totalReceived, totalProcessed, totalCreatedCount, totalFailedCount, failedList)
+            createdList += ",".join(result["createdList"])
+            failedList += ",".join(result["failedList"])
+        
+        runDetails = {
+            "emailBody" : "<b>Total received: {0} <br>Total processed: {1}<br>Total created: {2}<br>Total failed: {3} <br>Failed List: {4}<br></b>".format(totalReceived, totalProcessed, totalCreatedCount, totalFailedCount, failedList),
+            "status" : {
+                "totalReceived" : totalReceived,
+                "totalProcessed" : totalProcessed,
+                "totalCreatedCount" : totalCreatedCount,
+                "totalFailedCount" : totalFailedCount,
+                "createdList" : createdList,
+                "failedList" : failedList
+            }
+        }
+        
+           
+        return runDetails
         
     except:
         # Log error and send email in case of exception

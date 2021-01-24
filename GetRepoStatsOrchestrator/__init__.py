@@ -1,6 +1,7 @@
 import logging
 import math
 import os
+from ssl import get_server_certificate
 import time
 import functools
 import operator
@@ -109,6 +110,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
             queryResult = yield context.call_activity("ExecuteGraphqlQuery", query)
                 
             if queryResult["executionFailed"] :
+                logging.error("Error- Graphql query execution failed, Appending the query and sleeping 60 seconds")
                 createGraphqlQueryTasksResult.append(query)
                 time.sleep(60)
                      
@@ -166,12 +168,49 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         
         # Parse the item creation statuses and form report to send notifications
 
-        taskCompletionEmailMessage = yield context.call_activity("ParseCosmosDBResultForEmail", uploadToCosmosDBTasksResult)
+        runCompletionStatus = yield context.call_activity("ParseCosmosDBResults", uploadToCosmosDBTasksResult)
+        
+        #-----------------------------------------------------------------
+        
+        # Add run id to the status dict to update the run info container
+        
+        runStatus = runCompletionStatus["status"]
+        runStatus["id"] = currentRunId
 
-        yield context.call_activity("SendEmailNotifications", taskCompletionEmailMessage)
+        # Update run info container
+        
+        yield context.call_activity("UpdateRunInfoWithStatus", runStatus)
+        
+        #-----------------------------------------------------------------
+        
+        publishToEventGrid = os.environ["PublishToEventGrid"]
+        
+        notificationText = ""
+        
+        if publishToEventGrid == "true":
+            
+            # Publish run info to event grid for any downstream processes
 
-        return taskCompletionEmailMessage
+            publishToEventGridStatus = yield context.call_activity("PublishRunInfoToEventGrid", str(currentRunId))
 
+            #-----------------------------------------------------------------
+
+            # Notify the run status
+
+            if publishToEventGridStatus["success"] :
+                notificationText = "Run completed and posted to event grid <br><br>" + runCompletionStatus["emailBody"]
+            else: 
+                notificationText = "Run completed, failed to posted to event grid <br><br>" + runCompletionStatus["emailBody"]
+
+            #-----------------------------------------------------------------
+            
+        else:
+            notificationText = "Run completed <br><br>" + runCompletionStatus["emailBody"]
+        
+           
+        notificationStatus = yield context.call_activity("SendEmailNotifications", notificationText)
+        return notificationStatus
+        
     else:
         # If unable to create id for current run notify and log error
         

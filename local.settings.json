@@ -16,8 +16,12 @@
     "CosmosDB_ServerlessMode": "false",
     "CosmosDB_ProvisionedThroughput": 400,
     "CosmosDB_RU_NeededForEachWrite": 5,
+    "SendEmailNotifications": "true <IF true SENDS EMAIL NOTIFICATIONS>",
     "SendGrid_API_Key": "<SENDGRID API KEY>",
-    "SendGrid_VerifiedFromSenderEmail" : "<SENDGRID VERIFIED SENDER EMAIL>",
-    "SendGrid_ToEmail" : "<EMAIL FOR RECEIVING NOTIFICATIONS>"
+    "SendGrid_VerifiedFromSenderEmail": "<SENDGRID VERIFIED SENDER EMAIL>",
+    "SendGrid_ToEmail": "<EMAIL FOR RECEIVING NOTIFICATIONS>",
+    "PublishToEventGrid" : "true <IF true PUBLISHES EVENT TO EVENT GRID FOR NOTIFYING DOWN STREAM PROCESS TO START>",
+    "EventGridEndpoint" : "<EVENT GRID ENDPOINT FOR NOTIFYING DOWN STREAM PROCESS TO START>",
+    "EventGridKey" : "<EVENT GRID END POINT KEY>"
   }
 }
