@@ -7,7 +7,8 @@ from Helpers.SendEmails import sendEmail
 
 def cosmosDbContainer(endPoint: str, key: str, databaseName: str, containerName: str): 
     """
-    Takes in a Cosmos DB endpoint, key, database name, container name and returns the container instance to work on it
+    Takes in a Cosmos DB endpoint, key, database name, container name
+    Returns the container instance to work on it
 
         Parameters
             endPoint (str) - Cosmos DB endpoint
@@ -34,7 +35,8 @@ def cosmosDbContainer(endPoint: str, key: str, databaseName: str, containerName:
 
 def partitionDataForThrottling(data :List) -> List:
     """
-    Takes in a list and returns list of data in allowable RU limits
+    Takes in list of all data to post to Cosmos DB
+    Returns list of lists containing data in allowable RU limit
 
         Parameters
             data (List) - List of all data that need to be created in Cosmos DB
