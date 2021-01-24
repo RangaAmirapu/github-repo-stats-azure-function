@@ -17,8 +17,7 @@ def main(emailData: str) -> str:
     try:
         # Call send email function from Helper folder
         
-        sendEmail(emailData)
-        return "email sent via sendgrid"
+        return sendEmail(emailData)
     
     except:
         # Log error and try to call helper email function in case of exception

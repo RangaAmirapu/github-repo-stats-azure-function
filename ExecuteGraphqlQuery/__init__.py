@@ -38,6 +38,8 @@ def main(graphqlQueryToExecute: str) -> Dict:
         result = endpoint(graphqlQueryToExecute)
 
         if "errors" in result:
+            logging.error("Error- Graphql query execution has errors")
+            logging.error(graphqlQueryToExecute)
             executionFailed = True
 
         else:
