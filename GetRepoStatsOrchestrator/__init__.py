@@ -1,11 +1,9 @@
 import logging
 import math
 import os
-from ssl import get_server_certificate
 import time
 import functools
 import operator
-
 import azure.durable_functions as df
 
 from github import *

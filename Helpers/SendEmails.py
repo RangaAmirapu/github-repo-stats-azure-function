@@ -8,10 +8,14 @@ from sendgrid.helpers.mail import Mail
 
 def sendEmail(emailData: str) -> str:
     """
-    Takes in a email body string and posts to sendgrid api for processing
+    Takes in email body and posts to sendgrid api for processing
+    Returns status of the operation
 
         Parameters
             emailData (str) - String containing email body
+            
+        Returns
+            String containing the status of operation
     """
     
     try:

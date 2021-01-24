@@ -8,7 +8,7 @@ from Helpers.SendEmails import sendEmail
 def publishEvent(endpoint: str, endpointKey: str, eventGridData: List) -> Dict:
 
     """
-    Takes in subject, eventGridData, eventType to post to event grid
+    Takes in event grid topic endpoint, endpoint key, event grid data to post to event grid
     Returns status of the operation
 
         Parameters

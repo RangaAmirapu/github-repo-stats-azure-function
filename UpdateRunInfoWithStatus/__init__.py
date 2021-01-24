@@ -9,7 +9,8 @@ from Helpers.CosmosDBClient import cosmosDbContainer, partitionDataForThrottling
 
 def main(runStatus: Dict) -> str:
     """
-    Takes in a dict of current run status and updates the run info container with status 
+    Takes in a dict of current run status and updates the run info container with status
+    Returns result of the update
 
         Parameters
             runStatus (Dict) - Status of the current run

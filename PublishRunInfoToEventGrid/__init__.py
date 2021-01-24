@@ -14,7 +14,7 @@ def main(runId: str) -> Dict:
     Returns dict containing status of the operation
 
         Parameters
-            runId (str) - Current run id sent to run info table
+            runId (str) - Current run id in run info table
             
         Returns
             Status of the operation

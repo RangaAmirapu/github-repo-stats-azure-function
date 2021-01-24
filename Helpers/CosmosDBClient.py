@@ -14,6 +14,9 @@ def cosmosDbContainer(endPoint: str, key: str, databaseName: str, containerName:
             key (str) - Cosmos DB key
             databaseName (str) - Cosmos DB database name
             containerName (str) - Cosmos DB container name
+            
+        Returns
+            Container instance to work on it
     """
     try:
         client = cosmos_client.CosmosClient(endPoint, key)
