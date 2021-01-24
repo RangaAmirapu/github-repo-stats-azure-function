@@ -6,7 +6,6 @@
     "FUNCTIONS_WORKER_PROCESS_COUNT": 1,
     "PYTHON_THREADPOOL_THREAD_COUNT": 5,
     "Github_Token": "<GITHUB API KEY>",
-    "NumberOfReposToCleanPerTask": 1000,
     "NumberOfReposToQueryPerCall": 65,
     "CosmosDB_Endpoint": "<COSMOSDB ENDPOINT URL>",
     "CosmosDB_PrimaryKey": "<COSMOSDB PRIMARY KEY>",
