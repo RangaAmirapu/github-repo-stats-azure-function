@@ -35,8 +35,8 @@ def main(cosmosDBResult: List) -> Dict:
             totalProcessed += result["processed"]
             totalCreatedCount += result["createdCount"]
             totalFailedCount += result["failedCount"]
-            createdList += ",".join(result["createdList"])
-            failedList += ",".join(result["failedList"])
+            createdList += ",".join(result["createdList"]) + ","
+            failedList += ",".join(result["failedList"]) + "," 
         
         runDetails = {
             "emailBody" : "<b>Total received: {0} <br>Total processed: {1}<br>Total created: {2}<br>Total failed: {3} <br>Failed List: {4}<br></b>".format(totalReceived, totalProcessed, totalCreatedCount, totalFailedCount, failedList),
